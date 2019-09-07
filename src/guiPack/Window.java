@@ -7,7 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public abstract class Window {
+public abstract class Window implements Showable{
 
 	protected Parent root;
 	protected Stage stage;
