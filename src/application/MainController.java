@@ -1,8 +1,10 @@
 package application;
 
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import GeneralPack.GeneralWindow;
 import guiPack.Showable;
 import guiPack.WindowController;
 import javafx.fxml.FXML;
@@ -21,6 +23,14 @@ public class MainController extends WindowController{
 		Timer timer = new Timer();
 		ShowTimerTask showTask = new ShowTimerTask();
 		timer.schedule(showTask, 100);
+		try {
+			GeneralWindow genWin = new GeneralWindow();
+			genWin.show();
+		}
+		catch(IOException ioExp) {
+			System.out.println(ioExp.getStackTrace());
+		}
+		myWindow.close();
 	}
 	
 	class ShowTimerTask extends TimerTask{
@@ -28,6 +38,10 @@ public class MainController extends WindowController{
 		double opacityValue = 0.1;
 		@Override
 		public void run() {
+			initProgram();
+		}
+		
+		private synchronized void initProgram() {
 			while(this.opacityValue < 1.0){
 				pane.setOpacity(this.opacityValue);
 				this.opacityValue += 0.1; 
@@ -36,9 +50,7 @@ public class MainController extends WindowController{
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-			}
-			myWindow.close();
-			
+			}	
 		}
 		
 	}

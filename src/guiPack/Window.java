@@ -17,21 +17,15 @@ public abstract class Window implements Showable{
 	protected FXMLLoader loader;
 	protected WindowController controller;
 	
-	public Window(String Title, String FXMLFile) {
+	public Window(String Title, String FXMLFile) throws IOException {
+		this.stage = new Stage();
 		this.title = Title;
 		this.fxmlFile = FXMLFile;
-		try {
-			this.loader = new FXMLLoader(getClass().getResource(fxmlFile));
-			this.root = loader.load();
-			this.scene = new Scene(root);
-			this.stage = new Stage();
-			stage.setScene(scene);
-			stage.setTitle(title);
-		}
-		catch(IOException ioExp) {
-			
-		}
-		
+		this.loader = new FXMLLoader(getClass().getResource(fxmlFile));
+		this.root = loader.load();
+		this.scene = new Scene(root);			
+		stage.setScene(scene);
+		stage.setTitle(title);		
 	}
 	
 	public void show() {

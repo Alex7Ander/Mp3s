@@ -47,6 +47,7 @@ public class Main extends Application implements Showable {
 
 	@Override
 	public void close() {
-		Platform.exit();	
+		stage.close();
+		//Platform.exit();	
 	}
 }
