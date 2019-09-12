@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GeneralPack.GeneralWindowController">
+<AnchorPane fx:id="mainAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GeneralPack.GeneralWindowController">
    <children>
       <BorderPane layoutX="112.0" layoutY="57.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -13,30 +13,20 @@
                <menus>
                   <Menu mnemonicParsing="false" text="Плейлисты">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="Открыть" />
-                        <MenuItem mnemonicParsing="false" text="Добавить" />
-                        <MenuItem mnemonicParsing="false" text="Редактировать" />
+                      <MenuItem fx:id="openPlayListMenuItem" mnemonicParsing="false" onAction="#openPlayListMenuItemClick" text="Открыть" />
+                        <MenuItem fx:id="addPlayListMenuItem" mnemonicParsing="false" onAction="#addPlayListMenuItemClick" text="Добавить" />
+                        <MenuItem fx:id="editPlayListMenuItem" mnemonicParsing="false" onAction="#editPlayListMenuItemClick" text="Редактировать" />
                     </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="Библиотеки">
                      <items>
-                        <Menu mnemonicParsing="false" text="Жанры">
-                          <items>
-                              <MenuItem mnemonicParsing="false" text="Добавить" />
-                              <SeparatorMenuItem mnemonicParsing="false" />
-                          </items>
-                        </Menu>
-                        <Menu mnemonicParsing="false" text="Исполнители">
-                          <items>
-                            <MenuItem mnemonicParsing="false" text="Добавить" />
-                              <SeparatorMenuItem mnemonicParsing="false" />
-                          </items>
-                        </Menu>
+                        <MenuItem fx:id="genresMenuItem" mnemonicParsing="false" onAction="#genresMenuItemClick" text="Жанры" />
+                        <MenuItem fx:id="musiciansMenuItem" mnemonicParsing="false" onAction="#musiciansMenuItemClick" text="Исполнители" />
                      </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="Поиск">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="Сканировать" />
+                      <MenuItem fx:id="scanMenuItem" mnemonicParsing="false" onAction="#scanMenuItemClick" text="Сканировать" />
                     </items>
                   </Menu>
                </menus>
