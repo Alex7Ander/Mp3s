@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import guiPack.Showable;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;

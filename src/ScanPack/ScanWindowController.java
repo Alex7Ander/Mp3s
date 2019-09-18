@@ -4,11 +4,12 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import MusicPack.SongBox;
 import guiPack.Showable;
 import guiPack.WindowController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.WorkerStateEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -20,57 +21,54 @@ public class ScanWindowController extends WindowController {
 
 	private ScanWindow myWindow;
 	
+	private String scanPath;
 	private ObservableList<String> listOfFiles;
-	private ScannigThread scanThr;
-	private boolean scaning;
-//Контроллы	
+	private ArrayList<File> mp3Files;
+	
 	@FXML
 	private Button openDirBtn;
-
+	@FXML
+	private ProgressIndicator progress;
 	@FXML
 	private ListView<String> filesListView;
 	
-	@FXML
-	private ProgressIndicator progressIndicator;
-	
-//Обработчики событий	
+//
 	@FXML
 	private void initialize() {
+		progress.setVisible(false);
 		listOfFiles = FXCollections.observableArrayList();	
+		mp3Files = new ArrayList<File>();
 		filesListView.setItems(listOfFiles);
-		
-		progressIndicator.setVisible(false);
-		scaning = false;
 	}
 
 	@FXML
 	private void openDirBtnClick() {
-		if (this.scaning == false) {
-			DirectoryChooser directoryChooser = new DirectoryChooser();
-			Stage directoryChooserStage = new Stage();
-			File dir = directoryChooser.showDialog(directoryChooserStage);
-			if (dir != null) {	
-				
-				SongBox box = new SongBox();
-				
-				this.scanThr = new ScannigThread(dir, box);
-				this.scaning = true;
-				this.openDirBtn.setText("Стоп");
-				this.progressIndicator.setVisible(true);
-				this.scanThr.start();				
-				while(scanThr.isWorking()) {				
-					this.listOfFiles.add(box.get().getName());
-				}
-				this.progressIndicator.setVisible(false);
-				this.scaning = false;
-				this.openDirBtn.setText("Открыть");
-			}
-		}
-		else{
-			this.scanThr.interrupt();
-			this.scaning = false;
-			this.openDirBtn.setText("Открыть");
+		DirectoryChooser directoryChooser = new DirectoryChooser();
+		Stage directoryChooserStage = new Stage();
+		File dir = directoryChooser.showDialog(directoryChooserStage);
+		if (dir == null) {
+			return;
 		}		
+		if(!dir.isDirectory()) {
+			//РЎРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ!!! Р’С‹ РІС‹Р±СЂР°Р»Рё РЅРµ РґРёСЂСЂРµРєС‚РѕСЂРёСЋ
+		}
+		
+		listOfFiles.clear();
+		mp3Files.clear();
+		ScanerService scanService = new ScanerService(dir.getAbsolutePath(), listOfFiles, mp3Files);
+		scanService.setOnScheduled(new EventHandler<WorkerStateEvent>() {
+			@Override
+			public void handle(WorkerStateEvent arg0) {
+				progress.setVisible(true);
+			}			
+		});
+		scanService.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+			@Override
+			public void handle(WorkerStateEvent arg0) {
+				progress.setVisible(false);
+			}			
+		});
+		scanService.start();
 	}
 	
 	@Override
@@ -79,3 +77,4 @@ public class ScanWindowController extends WindowController {
 	}
 	
 }
+
