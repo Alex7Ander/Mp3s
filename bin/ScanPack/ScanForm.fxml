@@ -6,26 +6,56 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScanPack.ScanWindowController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="541.0" prefWidth="586.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScanPack.ScanWindowController">
    <children>
-      <HBox layoutX="64.0" layoutY="54.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <VBox prefHeight="541.0" prefWidth="600.0">
          <children>
-            <VBox prefHeight="400.0" prefWidth="242.0">
+            <Label text="Дирректория: " />
+            <HBox prefHeight="522.0" prefWidth="580.0">
                <children>
-                  <HBox prefHeight="53.0" prefWidth="242.0">
+                  <VBox prefHeight="400.0" prefWidth="242.0">
                      <children>
-                        <Button fx:id="openDirBtn" mnemonicParsing="false" onAction="#openDirBtnClick" prefHeight="40.0" prefWidth="187.0" text="Открыть" />
-                        <ProgressIndicator fx:id="progress" prefHeight="40.0" prefWidth="65.0" />
+                        <HBox prefHeight="53.0" prefWidth="242.0">
+                           <children>
+                              <Button fx:id="openDirBtn" mnemonicParsing="false" onAction="#openDirBtnClick" prefHeight="40.0" prefWidth="187.0" text="Открыть" />
+                              <ProgressIndicator fx:id="progress" prefHeight="40.0" prefWidth="65.0" />
+                           </children>
+                        </HBox>
+                        <Separator prefHeight="20.0" prefWidth="242.0" />
+                        <ListView fx:id="filesListView" prefHeight="345.0" prefWidth="242.0" VBox.vgrow="ALWAYS">
+                           <VBox.margin>
+                              <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                           </VBox.margin>
+                        </ListView>
                      </children>
-                  </HBox>
-                  <Separator prefHeight="20.0" prefWidth="242.0" />
-                  <ListView fx:id="filesListView" prefHeight="345.0" prefWidth="242.0" VBox.vgrow="ALWAYS">
-                     <VBox.margin>
-                        <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-                     </VBox.margin></ListView>
+                  </VBox>
+                  <VBox prefHeight="380.0" prefWidth="339.0">
+                     <children>
+                        <Label text="Информация" />
+                        <Separator prefWidth="200.0" />
+                        <Label prefHeight="15.0" text="Исполнитель" />
+                        <TextField />
+                        <Label prefHeight="15.0" text="Название трека" />
+                        <TextField />
+                        <Label prefHeight="15.0" text="Жанр" />
+                        <ComboBox prefHeight="25.0" prefWidth="337.0" />
+                        <Label text="Поджанр" />
+                        <TextField />
+                        <Label text="Альбом" />
+                        <TextField />
+                        <Label text="Композитор" />
+                        <TextField />
+                        <Label text="Автор текста" />
+                        <TextField />
+                        <Label text="Комментарий" />
+                        <TextArea prefHeight="129.0" prefWidth="339.0" />
+                        <Separator prefHeight="23.0" prefWidth="339.0" />
+                        <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="339.0" text="Сохранить" />
+                     </children>
+                  </VBox>
                </children>
-            </VBox>
+            </HBox>
          </children>
-      </HBox>
+      </VBox>
    </children>
 </AnchorPane>

@@ -2,7 +2,6 @@ package ScanPack;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import guiPack.Showable;
 import guiPack.WindowController;
@@ -12,8 +11,11 @@ import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
@@ -31,8 +33,28 @@ public class ScanWindowController extends WindowController {
 	private ProgressIndicator progress;
 	@FXML
 	private ListView<String> filesListView;
+	@FXML
+	private Label pathLabel;
+	@FXML
+	private TextField singerName;
+	@FXML
+	private TextField songName;
+	@FXML
+	private TextField genre;
+	@FXML
+	private TextField subGenre;
+	@FXML
+	private TextField album;
+	@FXML
+	private TextField composer;
+	@FXML
+	private TextField textAuthor;
+	@FXML
+	private TextArea comment;
+	@FXML
+	private Button saveBtn;
 	
-//
+// 
 	@FXML
 	private void initialize() {
 		progress.setVisible(false);
@@ -69,6 +91,10 @@ public class ScanWindowController extends WindowController {
 			}			
 		});
 		scanService.start();
+	}
+	@FXML
+	private void saveBtnClick() {
+		//
 	}
 	
 	@Override
