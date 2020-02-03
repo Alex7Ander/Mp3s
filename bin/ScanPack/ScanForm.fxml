@@ -8,10 +8,10 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="541.0" prefWidth="586.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScanPack.ScanWindowController">
    <children>
-      <VBox prefHeight="541.0" prefWidth="600.0">
+      <VBox prefHeight="541.0" prefWidth="600.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
-            <Label text="Дирректория: " />
-            <HBox prefHeight="522.0" prefWidth="580.0">
+            <Label fx:id="pathLabel" text="Дирректория: " />
+            <HBox prefHeight="568.0" prefWidth="523.0">
                <children>
                   <VBox prefHeight="400.0" prefWidth="242.0">
                      <children>
@@ -34,23 +34,23 @@
                         <Label text="Информация" />
                         <Separator prefWidth="200.0" />
                         <Label prefHeight="15.0" text="Исполнитель" />
-                        <TextField />
+                        <TextField fx:id="singerName" />
                         <Label prefHeight="15.0" text="Название трека" />
-                        <TextField />
+                        <TextField fx:id="songName" />
                         <Label prefHeight="15.0" text="Жанр" />
-                        <ComboBox prefHeight="25.0" prefWidth="337.0" />
+                        <TextField fx:id="genre" />
                         <Label text="Поджанр" />
-                        <TextField />
+                        <TextField fx:id="subGenre" />
                         <Label text="Альбом" />
-                        <TextField />
+                        <TextField fx:id="album" />
                         <Label text="Композитор" />
-                        <TextField />
+                        <TextField fx:id="composer" />
                         <Label text="Автор текста" />
-                        <TextField />
+                        <TextField fx:id="textAuthor" />
                         <Label text="Комментарий" />
-                        <TextArea prefHeight="129.0" prefWidth="339.0" />
+                        <TextArea fx:id="comment" prefHeight="129.0" prefWidth="339.0" />
                         <Separator prefHeight="23.0" prefWidth="339.0" />
-                        <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="339.0" text="Сохранить" />
+                        <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#saveBtnClick" prefHeight="43.0" prefWidth="339.0" text="Сохранить" />
                      </children>
                   </VBox>
                </children>

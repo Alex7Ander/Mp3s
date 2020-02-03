@@ -72,7 +72,7 @@ public class ScanWindowController extends WindowController {
 			return;
 		}		
 		if(!dir.isDirectory()) {
-			//Сообщение об ошибке!!! Вы выбрали не дирректорию
+			//
 		}
 		
 		listOfFiles.clear();

@@ -2,13 +2,13 @@ package ScanPack;
 
 import java.io.File;
 import java.io.FileFilter;
-import java.util.ArrayList;
+import java.util.List;
 
 import javafx.collections.ObservableList;
 
 public class FilesScaner {
 	
-	public static void scan(String path, ObservableList<String> listOfFiles, ArrayList<File> result) {
+	public static void scan(String path, List<String> listOfFiles, List<File> result) {
 		File dir = new File(path);
 		if (dir.isDirectory()) {
 			for (File includedFile : dir.listFiles()) {
@@ -18,13 +18,13 @@ public class FilesScaner {
 				}
 				else {
 					String name = includedFile.getName();
-					if (name.contains(".mp3")) {
+					if (name.contains(".mp3")) { 
 						result.add(includedFile);
-						listOfFiles.add(includedFile.getName());
+						listOfFiles.add(name);
 					}
 				}
 			}			
-		}
+		} 
 	}
 	
 	static class ExtentionFilter implements FileFilter{
